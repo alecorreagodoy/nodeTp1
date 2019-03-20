@@ -5,16 +5,16 @@ let routes = require('./routes')
 
 http
 .createServer(function (request, response){
-    let method = request.method.toLocaleLowerCase()
+    let method = request.method.toLowerCase()
 
     let methodAllowed = typeof routes[method]
 
     if (methodAllowed === 'undefined') {
         return response.end('Method not allowed')
     }
-    let path = request.url.toLocaleLowerCase().replace('/','')
+    let path = request.url.toLowerCase().replace('/','')
 
-    let routePath = typeof routes[mehod][path]
+    let routePath = typeof routes[method][path]
 
     if (routePath === 'undefined') {
         return response.end('Not found')
